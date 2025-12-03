@@ -1,0 +1,20 @@
+.responsive-width {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .responsive-width {
+    width: 50%;
+  }
+}
+
+.responsive-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .responsive-flex {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,20 @@
+image: node:20
+
+pipelines:
+  default:
+    - step:
+        name: Build & Push Docker Image
+        size: 2x
+        caches:
+          - node
+        services:
+          - docker
+        script:
+          - echo "🧱 Installing dependencies"
+          - npm ci
+          - echo "⚡ Building React app"
+          - npm run build
+          - echo "🐳 Building Docker image"
+          - docker build -t anarocksuperadminfrontendreact/anarocksuperadminfrontend:react-host-03 .
+          - echo 12345678aA@ | docker login -u anarocksuperadminfrontendreact --password-stdin
+          - docker push anarocksuperadminfrontendreact/anarocksuperadminfrontend:react-host-03

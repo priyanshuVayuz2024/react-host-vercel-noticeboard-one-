@@ -1,0 +1,21 @@
+FROM node:20-slim as server
+
+ENV PORT=8000
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy all source files (React + server)
+COPY . .
+
+# Build React app
+RUN npm run build
+
+# Install server dependencies
+WORKDIR /app/server
+RUN npm install && npm cache clean --force
+
+EXPOSE $PORT
+CMD ["node", "index.js"]
