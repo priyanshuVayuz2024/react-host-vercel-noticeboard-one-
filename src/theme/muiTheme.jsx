@@ -8,6 +8,25 @@ export const getMuiTheme = () => {
       .getPropertyValue(`--${name}`)
       .trim() || "#000";
 
+  const applyThemeColors = () => {
+    const theme = JSON.parse(localStorage.getItem("PLATFORM_THEME"));
+
+    if (!theme) return;
+
+    const root = document.documentElement;
+
+    root.style.setProperty(
+      "--color-primary",
+      theme?.primaryColor ? theme?.primaryColor : "#884ea7"
+    );
+    root.style.setProperty(
+      "--color-secondary",
+      theme?.secondaryColor ? theme?.secondaryColor : "#ec4899"
+    );
+  };
+
+  applyThemeColors();
+
   return createTheme({
     palette: {
       mode:

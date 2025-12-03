@@ -35,4 +35,4 @@ jobs:
           context: .
           file: Dockerfilegithub
           push: true
-          tags: priyanshu2024/reacthostlocal:12
+          tags: priyanshu2024/reacthostlocal:vercel01
